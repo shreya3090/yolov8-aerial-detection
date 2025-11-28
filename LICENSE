@@ -1,0 +1,49 @@
+
+---
+
+# 2) Model Comparison Summary (YOLO variants) — concise (suitable for inclusion in report)
+Copyright (c) 2025 SHREYA SACHAN
+
+**Model Comparison — YOLOv8 variants (nano / small / medium)**
+
+This comparison evaluates YOLOv8 variants on the same aerial dataset (Bird / Drone or your labeled objects). The focus is on **accuracy (mAP@0.5)**, **inference latency (ms per image on GPU)**, **model size**, and **training cost**.
+
+- **YOLOv8n (nano)**
+  - **mAP@0.5 (expected)**: ~0.88–0.94 (depends on dataset)
+  - **Inference latency**: ~5–10 ms/image (GPU)
+  - **Model size**: ~3–10 MB
+  - **Training**: fastest; low VRAM; ideal for iterative experimentation and edge devices
+  - **Best for**: prototyping, low-power deployment, applications with many short inference calls
+
+- **YOLOv8s (small)**
+  - **mAP@0.5 (expected)**: ~0.90–0.96
+  - **Inference latency**: ~10–25 ms/image (GPU)
+  - **Model size**: ~20–40 MB
+  - **Training**: moderate time and GPU usage
+  - **Best for**: balanced accuracy and speed; recommended for production when resources permit
+
+- **YOLOv8m (medium)**
+  - **mAP@0.5 (expected)**: ~0.92–0.98
+  - **Inference latency**: ~20–50 ms/image (GPU)
+  - **Model size**: ~60–120 MB
+  - **Training**: slower; higher GPU memory; yields best detection quality
+  - **Best for**: high-accuracy requirements, critical surveillance use-cases
+
+**Practical Recommendation:** For most real-world aerial detection tasks where both speed and reasonable accuracy are required, **YOLOv8s** offers the best trade-off. Use **yolov8n** when prototyping or when deploying to constrained hardware; upgrade to **yolov8m** when maximizing detection performance is essential.
+
+---
+
+# 3) Final Documentation / Quickstart (Step-by-step, copy-ready)
+
+## A. Prerequisites
+- Python 3.8+  
+- GPU (NVIDIA + CUDA recommended) for training  
+- pip, git installed
+
+## B. Install (local)
+```bash
+git clone <your-repo-url>
+cd yolov8_detection_project
+python -m venv venv
+source venv/bin/activate       # Windows: venv\Scripts\activate
+pip install -r requirements.txt
